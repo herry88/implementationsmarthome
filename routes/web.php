@@ -27,5 +27,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware' => ['auth']], function () {
     //lampu taman
-    Route::resource('lampu', \App\Http\Controllers\LampuController::class);
+    Route::resource('lampu', \App\Http\Controllers\LightController::class);
 });

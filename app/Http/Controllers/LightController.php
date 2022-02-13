@@ -14,7 +14,8 @@ class LightController extends Controller
      */
     public function index()
     {
-        //
+        $lights = Light::all();
+        return view('lights.index', compact('lights'));
     }
 
     /**
