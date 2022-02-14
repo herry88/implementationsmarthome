@@ -25,7 +25,8 @@ class LightController extends Controller
      */
     public function create()
     {
-        //
+        //create a new light
+        return view('lights.create');
     }
 
     /**
@@ -37,6 +38,16 @@ class LightController extends Controller
     public function store(Request $request)
     {
         //
+        // return 'hello';
+        $this->validate(
+            $request,
+            [
+                'nm_lamp' => 'required',
+                'status' => 'required',
+            ]
+        );
+        Light::create($request->all());
+        return redirect()->route('lampu.index')->with('success', 'Light created successfully');
     }
 
     /**
