@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Light;
 
 class ApiLampuController extends Controller
 {
@@ -14,7 +15,16 @@ class ApiLampuController extends Controller
      */
     public function index()
     {
-        //
+        //api light
+        $lights = Light::all();
+        return response()->json(
+            [
+                'success' => true,
+                'msg'=>'Data lampu',
+                'data' => $lights
+            ],
+            200
+        );
     }
 
     /**
