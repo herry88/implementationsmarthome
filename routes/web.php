@@ -27,5 +27,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware' => ['auth']], function () {
     //lampu taman
-    Route::resource('lampu', \App\Http\Controllers\LightController::class);
+    Route::resource('light', \App\Http\Controllers\LightController::class);
+    Route::get('light/destroy/{id}', [App\Http\Controllers\LightController::class, 'destroy'])->name('light.destroy');
 });

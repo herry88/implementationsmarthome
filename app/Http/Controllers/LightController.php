@@ -47,7 +47,7 @@ class LightController extends Controller
             ]
         );
         Light::create($request->all());
-        return redirect()->route('lampu.index')->with('success', 'Light created successfully');
+        return redirect()->route('light.index')->with('success', 'Light created successfully');
     }
 
     /**
@@ -69,7 +69,8 @@ class LightController extends Controller
      */
     public function edit(Light $light)
     {
-        //
+        //edit a light
+        return view('lights.edit', compact('light'));
     }
 
     /**
@@ -81,7 +82,13 @@ class LightController extends Controller
      */
     public function update(Request $request, Light $light)
     {
-        //
+        //update light
+        $this->validate($request,[
+            'nm_lamp' => 'required',
+            'status' => 'required',
+        ]);
+        $light->update($request->all());
+        return redirect()->route('light.index')->with('success', 'Light updated successfully');
     }
 
     /**
@@ -90,8 +97,10 @@ class LightController extends Controller
      * @param  \App\Models\Light  $light
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Light $light)
+    public function destroy($id)
     {
-        //
+        //light destroy
+        Light::destroy($id);
+        return redirect()->route('light.index')->with('success', 'Light deleted successfully');
     }
 }

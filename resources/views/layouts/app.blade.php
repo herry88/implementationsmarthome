@@ -49,7 +49,7 @@
                                     Data Master
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('lampu.index') }}">Data Lampu</a>
+                                    <li><a class="dropdown-item" href="{{ route('light.index') }}">Data Lampu</a>
                                     </li>
                                     <li><a class="dropdown-item" href="#">Another action</a></li>
                                     <li>

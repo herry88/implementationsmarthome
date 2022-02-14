@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>Create lamp</title>
+    <title>Edit lamp</title>
 @endsection
 
 @section('content')
@@ -10,24 +10,25 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        {{ __('Create Lamp') }}
+                        {{ __('Edit Lamp') }}
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('light.store') }}">
+                        <form method="POST" action="{{ route('light.update', $light->id) }}">
                             @csrf
-                            @method('POST')
+                            @method('PUT')
                             <table class="table table-bordered">
                                 <tr>
                                     <td>Lamp Name</td>
-                                    <td><input type="text" name="nm_lamp" class="form-control"></td>
+                                    <td><input type="text" value="{{ $light->nm_lamp }}" name="nm_lamp"
+                                            class="form-control"></td>
                                 </tr>
                                 <tr>
                                     <td>Status</td>
                                     <td>
                                         <select class="form-control" name="status">
-                                            <option value="0">-Choose Please-</option>
-                                            <option value="on">On</option>
-                                            <option value="off">Off</option>
+                                            <option value="0">-Choose Status -</option>
+                                            <option value="on" >on</option>
+                                            <option value="off">off</option>
                                         </select>
                                     </td>
                                 </tr>
