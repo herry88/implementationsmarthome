@@ -20,7 +20,7 @@ class ApiLampuController extends Controller
         return response()->json(
             [
                 'success' => true,
-                'msg'=>'Data lampu',
+                'msg' => 'Data lampu',
                 'data' => $lights
             ],
             200
@@ -45,7 +45,23 @@ class ApiLampuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //store light api
+        $this->validate(
+            $request,
+            [
+                'nm_lamp' => 'required',
+                'status' => 'required',
+            ]
+        );
+        $light = Light::create($request->all());
+        return response()->json(
+            [
+                'success' => true,
+                'msg' => 'Data lampu',
+                'data' => $light,
+            ],
+            200
+        );
     }
 
     /**
